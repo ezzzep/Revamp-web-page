@@ -1,0 +1,11 @@
+/* style/scroll-animation.css */
+.scroll-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+}
+
+.scroll-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

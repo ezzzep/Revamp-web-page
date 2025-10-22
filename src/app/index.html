@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Your main Tailwind / CSS -->
+        <link href="./output.css" rel="stylesheet" />
+
+        <!-- Section CSS -->
+        <link href="./style/navbar.css" rel="stylesheet" />
+        <link href="./style/hero.css" rel="stylesheet" />
+        <link href="./style/meetMarci.css" rel="stylesheet" />
+        <link href="./style/icons.css" rel="stylesheet" />
+        <link href="./style/discover.css" rel="stylesheet" />
+        <link href="./style/creds.css" rel="stylesheet" />
+        <link href="./style/findHome.css" rel="stylesheet" />
+        <link href="./style/gallery.css" rel="stylesheet" />
+        <link href="./style/services.css" rel="stylesheet" />
+        <link href="./style/contactUs.css" rel="stylesheet" />
+        <link href="./style/map.css" rel="stylesheet" />
+        <link href="./style/footer.css" rel="stylesheet" />
+
+        <!-- Scroll animation CSS -->
+        <link href="./style/scroll-animation.css" rel="stylesheet" />
+
+        <title>Marci Metzger Homes</title>
+    </head>
+
+    <body class="bg-white m-0 p-0">
+
+        <!-- Navbar -->
+        <div id="navbar-container"></div>
+        <script>
+            fetch('./includes/navbar.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = './js/navbar.js';
+                    document.body.appendChild(script);
+                });
+        </script>
+
+        <!-- Hero Section -->
+        <div class="hero-container scroll-fade-up">
+            <img src="./assets/img/cover.png" alt="Cover Image" class="hero-image" />
+            <div class="hero-overlay">
+                <h1 class="hero-title scroll-fade-up">Pahrump Realtor</h1>
+                <p class="hero-subtitle scroll-fade-up">MARCI METZGER - THE RIDGE REALTY GROUP</p>
+                <a href="#" class="hero-button scroll-fade-up">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Meet Marci -->
+        <div id="meetMarci-container"></div>
+        <script>
+            fetch('./includes/meetMarci.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('meetMarci-container').innerHTML = data;
+                    handleScrollAnimation(); // trigger animation on load
+                });
+        </script>
+
+        <!-- Icons -->
+        <div id="icons-container-placeholder"></div>
+        <script>
+            fetch('./includes/icons.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('icons-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Discover -->
+        <div id="discover-container-placeholder"></div>
+        <script>
+            fetch('./includes/discover.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('discover-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Creds -->
+        <div id="creds-container-placeholder"></div>
+        <script>
+            fetch('./includes/creds.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('creds-container-placeholder').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = './js/creds.js';
+                    document.body.appendChild(script);
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Find Home -->
+        <div id="findHome-container-placeholder"></div>
+        <script>
+            fetch('./includes/findHome.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('findHome-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Gallery -->
+        <div id="gallery-container-placeholder"></div>
+        <script>
+            fetch('./includes/gallery.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('gallery-container-placeholder').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = './js/gallery.js';
+                    document.body.appendChild(script);
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Services -->
+        <div id="services-container-placeholder"></div>
+        <script>
+            fetch('./includes/services.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('services-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Contact Us -->
+        <div id="contactUs-container-placeholder"></div>
+        <script>
+            fetch('./includes/contactUs.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('contactUs-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Map -->
+        <div id="map-container-placeholder"></div>
+        <script>
+            fetch('./includes/map.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('map-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Footer -->
+        <div id="footer-container-placeholder"></div>
+        <script>
+            fetch('./includes/footer.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('footer-container-placeholder').innerHTML = data;
+                    handleScrollAnimation();
+                });
+        </script>
+
+        <!-- Scroll Animation JS -->
+        <script>
+            // Animate scroll-fade-up elements when they come into view
+            const scrollElements = () => document.querySelectorAll('.scroll-fade-up');
+
+            const elementInView = (el, offset = 0) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+            };
+
+            const displayScrollElement = (element) => element.classList.add('visible');
+            const hideScrollElement = (element) => element.classList.remove('visible');
+
+            const handleScrollAnimation = () => {
+                scrollElements().forEach((el) => {
+                    if (elementInView(el, 50)) displayScrollElement(el);
+                    else hideScrollElement(el);
+                });
+            };
+
+            window.addEventListener('scroll', handleScrollAnimation);
+            window.addEventListener('load', handleScrollAnimation);
+
+            const observeDynamicContent = (containerId) => {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                const observer = new MutationObserver(() => handleScrollAnimation());
+                observer.observe(container, { childList: true, subtree: true });
+            };
+
+            ['meetMarci-container', 'discover-container-placeholder', 'creds-container-placeholder', 'findHome-container-placeholder', 'gallery-container-placeholder'].forEach(observeDynamicContent);
+        </script>
+
+    </body>
+
+</html>
