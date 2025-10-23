@@ -1,14 +1,9 @@
 <!doctype html>
 <html>
-
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <!-- Your main Tailwind / CSS -->
         <link href="./output.css" rel="stylesheet" />
-
-        <!-- Section CSS -->
         <link href="./style/navbar.css" rel="stylesheet" />
         <link href="./style/hero.css" rel="stylesheet" />
         <link href="./style/meetMarci.css" rel="stylesheet" />
@@ -21,16 +16,10 @@
         <link href="./style/contactUs.css" rel="stylesheet" />
         <link href="./style/map.css" rel="stylesheet" />
         <link href="./style/footer.css" rel="stylesheet" />
-
-        <!-- Scroll animation CSS -->
         <link href="./style/scroll-animation.css" rel="stylesheet" />
-
         <title>Marci Metzger Homes</title>
     </head>
-
     <body class="bg-white m-0 p-0">
-
-        <!-- Navbar -->
         <div id="navbar-container"></div>
         <script>
             fetch('./includes/navbar.html')
@@ -42,8 +31,6 @@
                     document.body.appendChild(script);
                 });
         </script>
-
-        <!-- Hero Section -->
         <div class="hero-container scroll-fade-up">
             <img src="./assets/img/cover.png" alt="Cover Image" class="hero-image" />
             <div class="hero-overlay">
@@ -52,19 +39,15 @@
                 <a href="#" class="hero-button scroll-fade-up">Contact Us</a>
             </div>
         </div>
-
-        <!-- Meet Marci -->
         <div id="meetMarci-container"></div>
         <script>
             fetch('./includes/meetMarci.html')
                 .then(res => res.text())
                 .then(data => {
                     document.getElementById('meetMarci-container').innerHTML = data;
-                    handleScrollAnimation(); // trigger animation on load
+                    handleScrollAnimation();
                 });
         </script>
-
-        <!-- Icons -->
         <div id="icons-container-placeholder"></div>
         <script>
             fetch('./includes/icons.html')
@@ -74,8 +57,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Discover -->
         <div id="discover-container-placeholder"></div>
         <script>
             fetch('./includes/discover.html')
@@ -85,8 +66,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Creds -->
         <div id="creds-container-placeholder"></div>
         <script>
             fetch('./includes/creds.html')
@@ -99,8 +78,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Find Home -->
         <div id="findHome-container-placeholder"></div>
         <script>
             fetch('./includes/findHome.html')
@@ -110,8 +87,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Gallery -->
         <div id="gallery-container-placeholder"></div>
         <script>
             fetch('./includes/gallery.html')
@@ -124,8 +99,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Services -->
         <div id="services-container-placeholder"></div>
         <script>
             fetch('./includes/services.html')
@@ -135,8 +108,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Contact Us -->
         <div id="contactUs-container-placeholder"></div>
         <script>
             fetch('./includes/contactUs.html')
@@ -146,8 +117,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Map -->
         <div id="map-container-placeholder"></div>
         <script>
             fetch('./includes/map.html')
@@ -157,8 +126,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Footer -->
         <div id="footer-container-placeholder"></div>
         <script>
             fetch('./includes/footer.html')
@@ -168,40 +135,6 @@
                     handleScrollAnimation();
                 });
         </script>
-
-        <!-- Scroll Animation JS -->
-        <script>
-            // Animate scroll-fade-up elements when they come into view
-            const scrollElements = () => document.querySelectorAll('.scroll-fade-up');
-
-            const elementInView = (el, offset = 0) => {
-                const elementTop = el.getBoundingClientRect().top;
-                return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
-            };
-
-            const displayScrollElement = (element) => element.classList.add('visible');
-            const hideScrollElement = (element) => element.classList.remove('visible');
-
-            const handleScrollAnimation = () => {
-                scrollElements().forEach((el) => {
-                    if (elementInView(el, 50)) displayScrollElement(el);
-                    else hideScrollElement(el);
-                });
-            };
-
-            window.addEventListener('scroll', handleScrollAnimation);
-            window.addEventListener('load', handleScrollAnimation);
-
-            const observeDynamicContent = (containerId) => {
-                const container = document.getElementById(containerId);
-                if (!container) return;
-                const observer = new MutationObserver(() => handleScrollAnimation());
-                observer.observe(container, { childList: true, subtree: true });
-            };
-
-            ['meetMarci-container', 'discover-container-placeholder', 'creds-container-placeholder', 'findHome-container-placeholder', 'gallery-container-placeholder'].forEach(observeDynamicContent);
-        </script>
-
+        <script src="./js/animation.js"></script>
     </body>
-
 </html>
