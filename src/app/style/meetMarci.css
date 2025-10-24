@@ -75,7 +75,7 @@ body {
     position: absolute;
     bottom: clamp(-1.2rem, -2vw, -1.5rem);
     right: clamp(-1rem, -2vw, 1rem);
-    width: 50%;
+    width: 85%;
     height: 85%;
     background-color: #1a1a1a;
     border-radius: 2px;
